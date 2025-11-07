@@ -1,0 +1,122 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Never Again Rwanda - Admin Panel</title>
+  <link rel="stylesheet" href="admin-styles.css">
+</head>
+<body>
+  <div id="login-page" class="login-page">
+    <div class="login-container">
+      <h1>Admin Login</h1>
+      <div class="login-form">
+        <input type="password" id="admin-password" placeholder="Enter admin password" />
+        <button onclick="adminLogin()">Sign In</button>
+        <p id="login-error" class="error"></p>
+      </div>
+    </div>
+  </div>
+
+  <div id="admin-page" class="admin-page" style="display:none;">
+    <header class="admin-header">
+      <div class="header-content">
+        <h1>Never Again Rwanda - Admin Panel</h1>
+        <button onclick="adminLogout()" class="btn-logout">Logout</button>
+      </div>
+    </header>
+
+    <div class="admin-container">
+      <div class="tabs">
+        <button class="tab-btn active" onclick="switchTab('hero')">Hero Section</button>
+        <button class="tab-btn" onclick="switchTab('about')">About Section</button>
+        <button class="tab-btn" onclick="switchTab('pillars')">Pillars</button>
+        <button class="tab-btn" onclick="switchTab('stats')">Statistics</button>
+        <button class="tab-btn" onclick="switchTab('ways')">Ways to Help</button>
+      </div>
+
+      <!-- Hero Tab -->
+      <div id="hero-tab" class="tab-content active">
+        <h2>Hero Section</h2>
+        <div class="form-group">
+          <label>Title</label>
+          <input type="text" id="hero-title-input" placeholder="Hero title" />
+        </div>
+        <div class="form-group">
+          <label>Subtitle</label>
+          <textarea id="hero-subtitle-input" placeholder="Hero subtitle"></textarea>
+        </div>
+        <div class="form-group">
+          <label>Primary Button Text</label>
+          <input type="text" id="hero-btn-primary-input" placeholder="Primary button text" />
+        </div>
+        <div class="form-group">
+          <label>Secondary Button Text</label>
+          <input type="text" id="hero-btn-secondary-input" placeholder="Secondary button text" />
+        </div>
+        <div class="form-group">
+          <label>Background Image</label>
+          <input type="file" id="hero-image-input" accept="image/*" onchange="previewImage(event, 'hero-preview')" />
+          <img id="hero-preview" class="image-preview" />
+          <p class="image-url-text">Or paste image URL:</p>
+          <input type="text" id="hero-image-url" placeholder="Image URL" />
+        </div>
+        <button onclick="saveHero()" class="btn-save">Save</button>
+        <p id="hero-message" class="message"></p>
+      </div>
+
+      <!-- About Tab -->
+      <div id="about-tab" class="tab-content">
+        <h2>About Section</h2>
+        <div class="form-group">
+          <label>Title</label>
+          <input type="text" id="about-title-input" placeholder="About title" />
+        </div>
+        <div class="form-group">
+          <label>Paragraph 1</label>
+          <textarea id="about-para1-input" placeholder="First paragraph"></textarea>
+        </div>
+        <div class="form-group">
+          <label>Paragraph 2</label>
+          <textarea id="about-para2-input" placeholder="Second paragraph"></textarea>
+        </div>
+        <div class="form-group">
+          <label>About Image</label>
+          <input type="file" id="about-image-input" accept="image/*" onchange="previewImage(event, 'about-preview')" />
+          <img id="about-preview" class="image-preview" />
+          <p class="image-url-text">Or paste image URL:</p>
+          <input type="text" id="about-image-url" placeholder="Image URL" />
+        </div>
+        <button onclick="saveAbout()" class="btn-save">Save</button>
+        <p id="about-message" class="message"></p>
+      </div>
+
+      <!-- Pillars Tab -->
+      <div id="pillars-tab" class="tab-content">
+        <h2>Pillars</h2>
+        <div id="pillars-editor"></div>
+        <button onclick="savePillars()" class="btn-save">Save All Pillars</button>
+        <p id="pillars-message" class="message"></p>
+      </div>
+
+      <!-- Stats Tab -->
+      <div id="stats-tab" class="tab-content">
+        <h2>Statistics</h2>
+        <div id="stats-editor"></div>
+        <button onclick="saveStats()" class="btn-save">Save All Stats</button>
+        <p id="stats-message" class="message"></p>
+      </div>
+
+      <!-- Ways Tab -->
+      <div id="ways-tab" class="tab-content">
+        <h2>Ways to Help</h2>
+        <div id="ways-editor"></div>
+        <button onclick="saveWays()" class="btn-save">Save All Ways</button>
+        <p id="ways-message" class="message"></p>
+      </div>
+    </div>
+  </div>
+
+  <script src="admin-script.js"></script>
+</body>
+</html>
